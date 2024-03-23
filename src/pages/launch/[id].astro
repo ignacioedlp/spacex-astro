@@ -1,0 +1,39 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getLaunchBy, getLaunches } from "@/lib/spacex";
+import type { Doc } from "@/types/api";
+
+// Si quiero renderizar esto en el servidor
+// export const prerender = false;
+
+const { id } = Astro.params;
+
+let launch;
+
+if (id) {
+  launch = await getLaunchBy({ id });
+}
+
+export async function getStaticPaths() {
+  const launches = (await getLaunches()) as Doc[];
+
+  return launches.map((launch) => ({
+    params: {
+      id: launch?.id,
+    },
+  }));
+}
+---
+
+<MainLayout title={launch ? launch.name : "Loading..."}>
+  <article class="flex gap-y-4 flex-col">
+    <img
+      src={launch?.links.patch.small
+        ? launch?.links.patch.small
+        : "https://cdn.dribbble.com/users/610788/screenshots/5157282/spacex.png"}
+      class="w-52 h-auto"
+    />
+    <h1 class="text-4xl text-white font-bold">{launch?.name}</h1>
+    <p class="text-lg">{launch?.details}</p>
+  </article>
+</MainLayout>

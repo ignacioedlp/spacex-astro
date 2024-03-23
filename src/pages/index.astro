@@ -1,0 +1,11 @@
+---
+//Layout
+import MainLayout from "@/layouts/MainLayout.astro";
+
+//Components
+import Launches from "@/components/Launches.astro";
+---
+
+<MainLayout title="Home page">
+  <Launches isOldest={false} />
+</MainLayout>
