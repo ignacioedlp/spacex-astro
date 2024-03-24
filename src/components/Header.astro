@@ -1,16 +1,34 @@
 ---
 import HeaderButton from "./HeaderButton.astro";
+import type { Doc } from "@/types/api";
+import axios from "axios";
+import { Countdown } from "./LaunchCountdown.jsx";
+
+// Obtiene los datos del próximo lanzamiento
+let launchData = null;
+try {
+  const response = await axios.get(
+    "https://api.spacexdata.com/v4/launches/next"
+  );
+  launchData = response.data as Doc;
+} catch (error) {
+  console.error("Error al obtener los datos del lanzamiento:", error);
+}
 ---
 
 <header class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
   <div class="mx-auto text-center mb-8 lg:mb-16">
     <h2 class="mb-4 text-5xl tracking-tighter font-extrabold text-white">
-      SpaceX launches
+      SpaceX launches 🚀
     </h2>
     <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-      All the upcoming space launches in one place.
+      Todos los próximos lanzamientos espaciales en un solo lugar.
     </p>
-  
+    {
+      launchData && (
+        <Countdown launchDate={launchData.date_local} client:visible />
+      )
+    }
   </div>
   <nav
     class="flex flex-col items-center justify-between w-full text-center md:flex-row"

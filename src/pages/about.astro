@@ -4,5 +4,67 @@ import MainLayout from "@/layouts/MainLayout.astro";
 ---
 
 <MainLayout title="About page">
+  <div class="rounded-lg border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-gray-700 transition flex flex-col">
+    <div class="container mx-auto p-8">
+      <header class="text-center py-5">
+        <h1 class="text-4xl font-bold">Proyecto SpaceX con Astro</h1>
+      </header>
 
+      <section class="my-6">
+        <h2 class="text-2xl font-semibold mb-3">Descripción</h2>
+        <p>
+          Esta aplicación web, desarrollada con Astro, muestra datos en tiempo
+          real sobre los lanzamientos de cohetes de SpaceX, aprovechando las
+          capacidades de la API de SpaceX.
+        </p>
+      </section>
+
+      <section class="my-6">
+        <h2 class="text-2xl font-semibold mb-3">Características</h2>
+        <ul class="list-disc pl-5">
+          <li>
+            Integración completa con la API de SpaceX para obtener datos sobre
+            lanzamientos.
+          </li>
+          <li>
+            Información detallada de cada lanzamiento, incluyendo fecha, éxito,
+            y detalles del cohete.
+          </li>
+          <li>Interfaz responsiva, optimizada para móviles y escritorio.</li>
+          <li>Diseño estilizado y moderno utilizando Tailwind CSS.</li>
+        </ul>
+      </section>
+
+      <section class="my-6">
+        <h2 class="text-2xl font-semibold mb-3">Cómo Usar</h2>
+        <ol class="list-decimal pl-5">
+          <li>Clonar el repositorio en tu máquina local.</li>
+          <li>Instalar las dependencias con <code>npm install</code>.</li>
+          <li>
+            Iniciar el servidor de desarrollo con <code>npm run dev</code>.
+          </li>
+          <li>
+            Acceder a <code>localhost:4321</code> en un navegador para ver la aplicación.
+          </li>
+        </ol>
+      </section>
+
+      <section class="my-6">
+        <h2 class="text-2xl font-semibold mb-3">Contribuciones</h2>
+        <p>
+          Las contribuciones son siempre bienvenidas. Para contribuir, por favor
+          haz un fork del repositorio, crea una nueva rama para tus cambios, y
+          envía un pull request.
+        </p>
+      </section>
+
+      <footer class="text-center py-5">
+        <p>Este proyecto está licenciado bajo MIT License.</p>
+        <p class="text-sm text-gray-600">
+          Proyecto no afiliado con SpaceX, solo para fines educativos y de
+          demostración.
+        </p>
+      </footer>
+    </div>
+  </div>
 </MainLayout>
