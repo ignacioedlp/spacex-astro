@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "/home/tofi/proyects/spacex-launches",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
