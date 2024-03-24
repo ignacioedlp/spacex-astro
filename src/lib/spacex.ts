@@ -59,3 +59,11 @@ export const getLaunches = async () => {
 
   return launches;
 };
+
+export const getLatestLaunch = async () => {
+  const res = await fetch("https://api.spacexdata.com/v4/launches/next");
+
+  const launch = await res.json();
+
+  return launch;
+}

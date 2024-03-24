@@ -1,16 +1,13 @@
 ---
 import HeaderButton from "./HeaderButton.astro";
 import type { Doc } from "@/types/api";
-import axios from "axios";
 import { Countdown } from "./LaunchCountdown.jsx";
+import { getLatestLaunch } from "@/lib/spacex";
 
-// Obtiene los datos del próximo lanzamiento
 let launchData = null;
 try {
-  const response = await axios.get(
-    "https://api.spacexdata.com/v4/launches/next"
-  );
-  launchData = response.data as Doc;
+  const response = await getLatestLaunch();
+  launchData = response as Doc;
 } catch (error) {
   console.error("Error al obtener los datos del lanzamiento:", error);
 }

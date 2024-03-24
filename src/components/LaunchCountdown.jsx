@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 
-// Función para calcular el tiempo restante
 function calculateCountdown(launchDate) {
   const now = new Date();
   const launchTime = new Date(launchDate);
   const timeLeft = launchTime - now;
 
-  // Convierte el tiempo a un formato legible
   let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
@@ -15,7 +13,6 @@ function calculateCountdown(launchDate) {
   return { days, hours, minutes, seconds };
 }
 
-// Componente de React para la cuenta regresiva
 export const Countdown = ({ launchDate }) => {
   const [timeLeft, setTimeLeft] = useState(calculateCountdown(launchDate));
 

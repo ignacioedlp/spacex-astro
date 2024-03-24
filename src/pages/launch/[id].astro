@@ -3,9 +3,6 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { getLaunchBy, getLaunches } from "@/lib/spacex";
 import type { Doc } from "@/types/api";
 
-// Si quiero renderizar esto en el servidor
-// export const prerender = false;
-
 const { id } = Astro.params;
 
 let launch;
@@ -38,8 +35,6 @@ export async function getStaticPaths() {
     <div class="flex flex-col gap-y-4 ml-0 md:ml-6">
       <h1 class="text-4xl text-white font-bold">{launch?.name}</h1>
       <p class="text-lg text-gray-300">{launch?.details}</p>
-
-      {/* Agregando más información del lanzamiento */}
       <p class="text-lg text-gray-300">
         Fecha de Lanzamiento: {
           new Date(String(launch?.date_utc)).toLocaleString()
@@ -55,8 +50,6 @@ export async function getStaticPaths() {
       <p class="text-lg text-gray-300">
         Plataforma de Lanzamiento: {launch?.launchpad}
       </p>
-
-      {/* Información adicional si está disponible */}
       {
         (launch?.failures?.length ?? 0) > 0 && (
           <div>
